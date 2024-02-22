@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:transport/ui/templates/button_template.dart';
 import 'package:transport/ui/travels/screens/travels_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -11,47 +13,39 @@ class AuthScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const TravelsScreen(),
-                  ),
-                );
-              },
-              style: TextButton.styleFrom(),
-              child: const Text(
-                'Get Started',
-                textAlign: TextAlign.center,
-              ),
+            const Icon(
+              Icons.travel_explore_rounded,
+              size: 200,
             ),
             const SizedBox(
-              height: 20,
+              height: 100,
             ),
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Terms and Conditions',
-                textAlign: TextAlign.center,
-              ),
-            ),
+            ButtonTemplate(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const TravelsScreen(),
+                    ),
+                  );
+                },
+                title: 'Get Started'),
+            ButtonTemplate(
+                onTap: _launchURL, title: 'Terms and Conditions'),
+            ButtonTemplate(onTap: _launchURL, title: 'Privacy Policy'),
             const SizedBox(
-              height: 20,
-            ),
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Privacy Policy',
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
+              height: 50,
             ),
           ],
         ),
       ),
     );
+  }
+
+  _launchURL() async {
+    final Uri url = Uri.parse('https://pub.dev');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

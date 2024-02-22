@@ -13,21 +13,39 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        focusColor: Colors.black,
         textTheme: TextTheme(
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            fixedSize: Size(MediaQuery.of(context).size.width / 2, 60),
-            alignment: Alignment.center,
-            backgroundColor: Color(0xFF22BB9C),
-            textStyle: TextStyle(
-              inherit: false,
-              fontSize: 20,
-              color: Colors.white,
-            ),
+          headlineLarge: const TextStyle(
+            fontSize: 20,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w500,
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 18,
+            color: Colors.grey[700],
+          ),
+          headlineMedium: const TextStyle(
+            fontSize: 18,
+          ),
+          titleMedium: const TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+          bodySmall: const TextStyle(
+            fontSize: 15,
+            color: Colors.black,
+          ),
+          bodyMedium: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+          bodyLarge: const TextStyle(
+            fontSize: 15,
+            color: Colors.black,
           ),
         ),
         primaryColor: const Color(0xFF22BB9C),
+        hintColor: Colors.grey,
       ),
       home: AnimatedSplashScreen(
         backgroundColor: const Color(0xFF22BB9C),
