@@ -9,9 +9,7 @@ class NetworkService {
   Future<List<Travel>> getTravels(
       String departureCity, String destinationCity, DateTime date) async {
     final response = await dio.get(
-        // '$url?departure_city=$departureCity&destination_city=$destinationCity&date=${DateFormat('yyyy-MM-dd').format(date)}');
-        '$url?departure_city=Москва&destination_city=Казань&date=${DateFormat('yyyy-MM-dd').format(DateTime.now())}');
-    print(response.data);
+        '$url?departure_city=$departureCity&destination_city=$destinationCity&date=${DateFormat('yyyy-MM-dd').format(date)}');
     List<Travel> travels = [];
     if (response.statusCode == 200) {
       for (var travel in response.data['trips']) {
